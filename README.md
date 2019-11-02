@@ -36,8 +36,4 @@ I let it in the project now as-is because I'm still trying to figure out if it's
 Has its own state, "painted" either true or false. It has a function when the mouse enter that particular pixel, it changes state to true and with a ternary operator, if the hovered state of it's parent component - Grid - is "hovered" with "MouseDown" (meaning the user actually click inside the Grid) then if change the "painted" state to "true" leading to a change of background color.
 
 
-## How
-
-App.js
-	
 	- 
