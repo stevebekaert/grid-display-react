@@ -3,22 +3,23 @@ import React from 'react';
 class Pixel extends React.Component {
     constructor(props) {
         super(props);
-        this.state =  {
-            count: 0
+        this.state = {
+            painted: false
         }
     }
 
-    handleIncrement= () => {
-        const counting = this.state.count;
-        this.setState({ count: counting + 1});
+    handleMouseEnter= () => {
+        this.setState({ painted : true});
     }
 
     render() {
-        return (
-            <td onMouseEnter={this.handleIncrement}>
-                { this.state.count }
-            </td>
-        )
+        /*Till now it worked*/
+        return <td 
+                onMouseEnter={this.props.hovered === "mouseDown" ?
+                this.handleMouseEnter:
+                undefined}
+                style={{
+                backgroundColor: this.state.painted ? 'black' : 'white' }}></td> 
     }
 }
 

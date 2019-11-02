@@ -1,15 +1,22 @@
 import React from 'react';
 import Grid from './Grid';
-import Pixel from './Pixel'
 
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Grid />
-    </div>
-  );
+class App extends React.Component {
+  
+  handleMouseDown= () => "mouseDown";
+
+  handleMouseUp = () => "mouseUp";
+
+
+  render = () => {
+    return (
+      <div className="App">
+        <Grid onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}/>
+      </div>
+    );
+  }
 }
 
 export default App;
