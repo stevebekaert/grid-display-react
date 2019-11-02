@@ -8,15 +8,20 @@ class Pixel extends React.Component {
         }
     }
 
+    handleMouseOver= () => {
+        this.setState({ colored : true});
+        return this.state.colored;
+    }
+
     render() {
         /*Till now it worked*/
-        const onMouseEnter = this.props.onMouseEnter;
+        const onMouseOver = this.props.onMouseOver;
 
         return <td 
-                onMouseEnter={() => onMouseEnter(this.props.position[1], this.props.position[0])}
+                onMouseEnter={() => onMouseOver(this.props.position[1], this.props.position[0])}
+                onMouseOver={this.handleMouseOver}
                 style={{
-                    backgroundColor: this.props.backgroundColor}}
-                ></td> 
+                backgroundColor: this.state.colored ? 'black' : 'white' }}></td> 
     }
 }
 

@@ -51,6 +51,7 @@ class Grid extends React.Component {
             grid: updatedGrid
         })
     }
+
     
     render = () => {
 
@@ -65,10 +66,9 @@ class Grid extends React.Component {
                     <tr key={rowIndex}>
                         { pixels.map((pixel, colIndex) => (
                             <Pixel 
-                                backgroundColor= {pixel.colored ? 'black' : 'white' }
                                 hovered={this.state.status}
-                                onMouseEnter={this.handleHover}
-                                test={pixel.colored}
+                                onMouseOver={this.handleHover}
+                                colored={pixel.colored}
                                 position={[rowIndex.toString(), colIndex.toString()]}
                                 key={"row" + rowIndex.toString() + "col" + colIndex.toString()} /> 
                                  )
