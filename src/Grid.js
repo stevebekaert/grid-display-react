@@ -3,10 +3,10 @@ import Pixel from './Pixel';
 
 const createTable = () => {
     let grid = [];
-    for (let i = 0; i < 32; i++) {
+    for (let i = 0; i < 16; i++) {
         let row = [];
-            for (let j= 0; j < 32; j++) {
-                row.push('0'); /*PAS ICI*/
+            for (let j= 0; j < 16; j++) {
+                row.push(false); /*PAS ICI*/
             }
     grid.push(row)
     }
@@ -14,6 +14,7 @@ const createTable = () => {
 }
 
 const myGrid = createTable();
+console.log(myGrid)
 
 class Grid extends React.Component {
     constructor(props) {
@@ -37,19 +38,38 @@ class Grid extends React.Component {
         })
        
     }
+
+    handleHover = (x, y) => {
+        const updatedGrid = this.state.grid.map((pixels, rowIndex) =>
+            pixels.map((pixel, colIndex) => {
+                if (y === rowIndex.toString() && x === colIndex.toString()) {
+                    pixel = true;
+                }
+            return pixel}))
+
+        this.setState({
+            grid: updatedGrid
+        })
+    }
     
     render = () => {
+
+    let table = this.state.grid;
+    
     return (
         <table onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp}>
             <thead></thead>
             <tbody>
                 {
-                this.state.grid.map((pixels, rowIndex) => ( 
-                    <tr>
+                table.map((pixels, rowIndex) => ( 
+                    <tr key={rowIndex}>
                         { pixels.map((pixel, colIndex) => (
                             <Pixel 
-                                pixel={pixel}
-                                hovered = {this.state.status}
+                                backgroundColor= {pixel.colored ? 'black' : 'white' }
+                                hovered={this.state.status}
+                                onMouseEnter={this.handleHover}
+                                test={pixel.colored}
+                                position={[rowIndex.toString(), colIndex.toString()]}
                                 key={"row" + rowIndex.toString() + "col" + colIndex.toString()} /> 
                                  )
                         )} 
