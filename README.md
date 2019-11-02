@@ -1,41 +1,6 @@
+#Grid for Pictionnary
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
@@ -43,26 +8,36 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Why/What is (developed) ?
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Why ?
 
-### Analyzing the Bundle Size
+I try to create a table that, once clicked on and maintened clicked, will color in black the background of its cells (called "Pixel"). In the end, it represent a pencil coloring the cells while hovered.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### What ?
 
-### Making a Progressive Web App
+- App.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Contain the grid.
 
-### Advanced Configuration
+- Grid.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Creates the Grid and set a status "Grid", representing the created array of array ('table').
+While rendering table, ti has two functions modifing its state by either onMouseUp or onMouseDown.
+When I check my representation, I see that I need to render first the ROW of my table and then in each row its corresponding ELEMENT in that ROW. That's why I choose to use a double map. 
+Still need to check / test if a Component "GridRow" isn't a better option.
 
-### Deployment
+- GridRow.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+I let it in the project now as-is because I'm still trying to figure out if it's necessary to create a "intermediate" component between my Grid and its Pixels.
 
-### `npm run build` fails to minify
+- Pixel.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Has its own state, "painted" either true or false. It has a function when the mouse enter that particular pixel, it changes state to true and with a ternary operator, if the hovered state of it's parent component - Grid - is "hovered" with "MouseDown" (meaning the user actually click inside the Grid) then if change the "painted" state to "true" leading to a change of background color.
+
+
+## How
+
+App.js
+	
+	- 

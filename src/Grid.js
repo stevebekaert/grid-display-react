@@ -1,5 +1,4 @@
 import React from 'react';
-import GridRow from './GridRow';
 import Pixel from './Pixel';
 
 const createTable = () => {
@@ -29,14 +28,14 @@ class Grid extends React.Component {
         this.setState({
             status: "mouseDown"
         })
-        console.log(this.state.status);
+      
     }
 
     onMouseUp = () => {
         this.setState({
             status: "mouseUp"
         })
-        console.log(this.state.status)
+       
     }
     
     render = () => {
