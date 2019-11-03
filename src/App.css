@@ -31,3 +31,10 @@ td {
   height:10px;
 }
 
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: white;
+}

@@ -1,11 +1,13 @@
 import React from 'react';
 import Pixel from './Pixel';
 
+
+
 const createTable = () => {
     let grid = [];
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < 8; i++) {
         let row = [];
-            for (let j= 0; j < 16; j++) {
+            for (let j= 0; j < 8; j++) {
                 row.push(false); /*PAS ICI*/
             }
     grid.push(row)
@@ -29,7 +31,7 @@ class Grid extends React.Component {
         this.setState({
             status: "mouseDown"
         })
-      
+    return true;
     }
 
     onMouseUp = () => {
@@ -39,7 +41,7 @@ class Grid extends React.Component {
        
     }
 
-    handleHover = (x, y) => {
+    handleOver = (x, y) => {
         const updatedGrid = this.state.grid.map((pixels, rowIndex) =>
             pixels.map((pixel, colIndex) => {
                 if (y === rowIndex.toString() && x === colIndex.toString()) {
@@ -66,12 +68,12 @@ class Grid extends React.Component {
                     <tr key={rowIndex}>
                         { pixels.map((pixel, colIndex) => (
                             <Pixel 
-                                hovered={this.state.status}
-                                onMouseOver={this.handleHover}
-                                colored={pixel.colored}
+                                gridHovered={this.state.status}
+                                onMouseOver={this.handleOver}
+                                isColored={pixel} /*pixel.colored if use of an object */
                                 position={[rowIndex.toString(), colIndex.toString()]}
                                 key={"row" + rowIndex.toString() + "col" + colIndex.toString()} /> 
-                                 )
+                                )
                         )} 
                     </tr>
                         )
