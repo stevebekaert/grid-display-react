@@ -1,15 +1,22 @@
 import React from 'react';
-import Grid from './Grid';
+import UserInterface from './component/UserInterface';
+
 
 import './App.css';
 
 class App extends React.Component {
 
 
+  colorSelection = (color) => {
+    this.setState = ({
+        selectedColor : color
+    })
+}
+
   render = () => {
     return (
       <div className="App">
-        <Grid/>
+        <UserInterface/>
       </div>
     );
   }
