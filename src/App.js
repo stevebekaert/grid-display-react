@@ -1,5 +1,5 @@
 import React from 'react';
-import UserInterface from './component/UserInterface';
+import UserInterface from './UserInterface';
 
 
 import './App.css';
